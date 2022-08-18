@@ -22,3 +22,11 @@ class ProductPage(BasePage):
             "BASKET TOTAL message doesn't present"
         assert self.browser.find_element(*ProductPageLocators.BASKET_TOTAL_MESSAGE).text == product_price, \
             "Basket total doesn't match"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.HAS_BEEN_ADDED_TO_BASKET_MESSAGE), \
+            "Success message is presented"
+
+    def success_message_should_disappear(self):
+        assert self.is_disappeared(*ProductPageLocators.HAS_BEEN_ADDED_TO_BASKET_MESSAGE), \
+            "Success message doesn't disappear"
